@@ -1,0 +1,65 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Resource Manager</title>
+    <style>
+        span {
+            height: 100px;
+            width: 100px;
+            
+            vertical-align: middle;
+            line-height: normal;
+            margin-right: 40px;
+        }
+        .resourceStyle{
+            text-align:center;
+        }
+        .procesStyle {
+            text-align: center;
+        }
+        .process {
+            background-color: #bbb;
+            border-radius: 50%;
+            display:inline-block;
+        }
+
+        .resource {
+            border-radius: 0%;
+            background-color: #bbb;
+            display: inline-block;
+            vertical-align:middle;
+            margin-bottom:200px;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Welcome to Resource Manager</h1>
+
+    <div>
+        <p>Number of processes: @ViewBag.ProcessNumber</p>
+        <p>Available resources: @ViewBag.ResourceNumber</p>
+    </div>
+    <div class="resourceStyle">
+        @for (var i = 0; i < @ViewBag.ResourceNumber; i++)
+        {
+            <span class="resource">R@(i + 1)</span>
+        }
+    </div>
+
+    <div class="procesStyle">
+        @for (var i = 0; i < @ViewBag.ProcessNumber; i++)
+        {
+            <span class="process">P@(i + 1)</span>
+        }
+    </div>
+
+</body>
+</html>
