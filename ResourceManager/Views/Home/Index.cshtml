@@ -13,15 +13,19 @@
         span {
             height: 100px;
             width: 100px;
-            
             vertical-align: middle;
             line-height: normal;
-            margin-right: 40px;
+            margin-right: 20px;
+            margin-left: 20px;
         }
         .resourceStyle{
             text-align:center;
         }
         .procesStyle {
+            text-align: center;
+        }
+        .actionButton {
+            margin-top:100px;
             text-align: center;
         }
         .process {
@@ -50,15 +54,19 @@
     <div class="resourceStyle">
         @for (var i = 0; i < @ViewBag.ResourceNumber; i++)
         {
-            <span class="resource">R@(i + 1)</span>
+            <span class="resource" id="R@(i)">R@(i)</span>
         }
     </div>
 
     <div class="procesStyle">
         @for (var i = 0; i < @ViewBag.ProcessNumber; i++)
         {
-            <span class="process">P@(i + 1)</span>
+            <span class="process" id="P@(i)">P@(i)</span>
         }
+    </div>
+
+    <div class="actionButton">
+        <button id="startBtn" onclick="StartClick()">Start</button>    
     </div>
 
 </body>

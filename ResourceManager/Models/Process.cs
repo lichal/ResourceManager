@@ -7,5 +7,15 @@ namespace ResourceManager.Models
 {
     public class Process
     {
+        private int id;
+        public int GetID()
+        {
+            return id;
+        }
+
+        public void DefineID(int id)
+        {
+            this.id = id;
+        }
     }
 }
