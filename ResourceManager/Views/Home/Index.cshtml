@@ -10,6 +10,30 @@
     <meta name="viewport" content="width=device-width" />
     <title>Resource Manager</title>
     <style>
+        body{
+            background-color:#F9F9F9;
+            padding:0;
+            margin:0;
+            height:100%;
+        }
+        h1{
+            color:darkgreen;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            margin:0;
+            padding:0;
+        }
+        header {
+            background-color: aquamarine;
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+        }
+        .head {
+            max-width:none;
+            margin:auto;
+            background-color:aquamarine;
+            padding:10px;
+        }
         span {
             height: 100px;
             width: 100px;
@@ -18,6 +42,7 @@
             margin-right: 20px;
             margin-left: 20px;
         }
+        
         .resourceStyle{
             text-align:center;
         }
@@ -45,8 +70,15 @@
 
 </head>
 <body>
-    <h1>Welcome to Resource Manager</h1>
+    <header>
+        <div class="head">
+            <h1>Resource Manager</h1>
+        </div>
+    </header>
 
+    <canvas id="canvas" width="1000" height="500">
+
+    </canvas>
     <div>
         <p>Number of processes: @ViewBag.ProcessNumber</p>
         <p>Available resources: @ViewBag.ResourceNumber</p>
@@ -59,14 +91,18 @@
     </div>
 
     <div class="procesStyle">
-        @for (var i = 0; i < @ViewBag.ProcessNumber; i++)
+        @if (ViewBag.Show)
         {
-            <span class="process" id="P@(i)">P@(i)</span>
+            for (var i = 0; i < @ViewBag.ProcessNumber; i++)
+            {
+                <span class="process" id="P@(i)">P@(i)</span>
+            }
         }
+
     </div>
 
     <div class="actionButton">
-        <button id="startBtn" onclick="StartClick()">Start</button>    
+        <asp:Button ID="startBtn" runat="server" onclick="location.href='@Url.Action("StartClick","Home")'">Start</asp:Button>
     </div>
 
 </body>

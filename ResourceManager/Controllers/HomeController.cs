@@ -30,14 +30,15 @@ namespace ResourceManager.Controllers
             return resourceArray;
         }
         
-        protected void StartClick(object Source, EventArgs e)
+        public void StartClick()
         {
-            
+            ViewBag.Show = true;
         }
 
         // GET: Home
         public ViewResult Index()
         {
+            ViewBag.Show = false;
             var data = System.IO.File.ReadAllLines(Server.MapPath("~/App_Data/input3a.data"));
 
             int processNum = StringToInt(data[0]);
