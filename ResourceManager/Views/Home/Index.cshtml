@@ -3,70 +3,17 @@
     Layout = null;
 }
 
+
 <!DOCTYPE html>
 
+@Model
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Resource Manager</title>
-    <style>
-        body{
-            background-color:#F9F9F9;
-            padding:0;
-            margin:0;
-            height:100%;
-        }
-        h1{
-            color:darkgreen;
-            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            margin:0;
-            padding:0;
-        }
-        header {
-            background-color: aquamarine;
-            background-size: cover;
-            background-position: center;
-            width: 100%;
-        }
-        .head {
-            max-width:none;
-            margin:auto;
-            background-color:aquamarine;
-            padding:10px;
-        }
-        span {
-            height: 100px;
-            width: 100px;
-            vertical-align: middle;
-            line-height: normal;
-            margin-right: 20px;
-            margin-left: 20px;
-        }
-        
-        .resourceStyle{
-            text-align:center;
-        }
-        .procesStyle {
-            text-align: center;
-        }
-        .actionButton {
-            margin-top:100px;
-            text-align: center;
-        }
-        .process {
-            background-color: #bbb;
-            border-radius: 50%;
-            display:inline-block;
-        }
+    <link rel="stylesheet" href="~/Views/styles.css" type="text/css" />
 
-        .resource {
-            border-radius: 0%;
-            background-color: #bbb;
-            display: inline-block;
-            vertical-align:middle;
-            margin-bottom:200px;
-        }
-    </style>
+    <script type="text/javascript" src="~/Views/Manage/canvas.js"></script>
 
 </head>
 <body>
@@ -75,34 +22,13 @@
             <h1>Resource Manager</h1>
         </div>
     </header>
+    <div>
+        <canvas id="canvas" width="1000" height="500" contenteditable="true" />
+    </div>
 
-    <canvas id="canvas" width="1000" height="500">
-
-    </canvas>
     <div>
         <p>Number of processes: @ViewBag.ProcessNumber</p>
         <p>Available resources: @ViewBag.ResourceNumber</p>
-    </div>
-    <div class="resourceStyle">
-        @for (var i = 0; i < @ViewBag.ResourceNumber; i++)
-        {
-            <span class="resource" id="R@(i)">R@(i)</span>
-        }
-    </div>
-
-    <div class="procesStyle">
-        @if (ViewBag.Show)
-        {
-            for (var i = 0; i < @ViewBag.ProcessNumber; i++)
-            {
-                <span class="process" id="P@(i)">P@(i)</span>
-            }
-        }
-
-    </div>
-
-    <div class="actionButton">
-        <asp:Button ID="startBtn" runat="server" onclick="location.href='@Url.Action("StartClick","Home")'">Start</asp:Button>
     </div>
 
 </body>
